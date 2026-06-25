@@ -1,0 +1,34 @@
+# Ignore executable files
+*.exe
+*.out
+*.app
+
+# Ignore object files
+*.o
+*.obj
+
+# Ignore libraries
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# Ignore debug files
+*.pdb
+
+# Ignore build folders
+build/
+cmake-build-*/
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore Visual Studio files
+.vs/
+
+# Ignore Windows system files
+Thumbs.db
+
+# Ignore macOS system files
+.DS_Store
