@@ -27,12 +27,39 @@ int solve(vector<int>& prices,int fees,int i, int holding, vector<vector<int>>& 
     return dp[i][holding]=ans;
 }
 
+// int maxProfit(vector<int>& prices,int fees){
+//     int n=prices.size();
+
+//     vector<vector<int>>dp(n,vector<int>(2,-1));
+
+//     return solve(prices,fees,0,0,dp);
+// }
+
+
+// tabulation method,
 int maxProfit(vector<int>& prices,int fees){
     int n=prices.size();
 
-    vector<vector<int>>dp(n,vector<int>(2,-1));
+    vector<vector<int>> dp(n+1,vector<int>(2,-1));
 
-    return solve(prices,fees,0,0,dp);
+    // int ans
+
+    for(int i=n-1;i>=0;i++){
+
+        // not holding stock
+        int buy=-prices[i]+dp[i+1][1];
+        int skip=dp[i+1][0];
+
+        dp[i][0]=max(buy,skip);
+
+
+        // holding stock
+        int sell=prices[i]-fees +dp[i+1][0];
+        int skipStock=dp[i+1][1];
+        dp[i][1]=max(buy,skipStock);
+    }
+
+    return dp[0][0];
 }
 
 int main(){
